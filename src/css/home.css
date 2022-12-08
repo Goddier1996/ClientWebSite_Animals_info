@@ -1,0 +1,720 @@
+body {
+    background-color: #DDF6E3 !important;
+    padding-right: 0px;
+}
+
+/* desgin scroll in web */
+html::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background: #ffffff;
+}
+
+html::-webkit-scrollbar {
+    width: 12px;
+    background-color: #ffffff;
+}
+
+
+html::-webkit-scrollbar-thumb {
+    border-radius: 100px;
+    border: 3px solid white;
+    background-color: #40a89f;
+    background-image: -webkit-linear-gradient(295deg,
+            #fec107 25%,
+            transparent 25%,
+            transparent 50%,
+            #fec107 50%,
+            #fec107 75%,
+            transparent 75%,
+            transparent);
+}
+
+
+
+
+.swal2-container.swal2-backdrop-show,
+.swal2-container.swal2-noanimation {
+    background: rgba(0, 0, 0, .9) !important;
+}
+
+
+.popUpHome {
+    position: relative;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+}
+
+
+/* pop up when open web site */
+.popUpHome h1 {
+    color: rgb(255, 255, 255);
+    font-size: 20px;
+    letter-spacing: .5rem;
+    top: 8px;
+    position: absolute;
+}
+
+
+.popUpHome img {
+    object-fit: cover;
+    border-radius: 40px;
+    width: 400px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+}
+
+.popUpTextP4 {
+    color: rgb(255, 255, 255);
+    font-size: 13px;
+    letter-spacing: .1rem;
+}
+
+
+
+
+/* title menu */
+
+.title {
+    background: url("https://i.postimg.cc/tTWpC7Tn/7588592-1311.jpg");
+    box-shadow: inset rgba(0, 0, 0, 0.22) 0 0 0 500px;
+    transition: box-shadow 400ms;
+    width: 100%;
+    height: auto;
+    border-radius: 0 0 15% 50%;
+}
+
+.title p {
+    color: rgb(255, 255, 255);
+    font-size: 18px;
+    letter-spacing: .2rem;
+    font-weight: 400;
+    margin-top: 0.5%;
+}
+
+.titleWeb,
+.help {
+    display: flex;
+    justify-content: center;
+}
+
+
+.help button {
+    font-size: 15px;
+    letter-spacing: .2rem;
+    cursor: pointer;
+    color: rgb(0, 0, 0);
+    margin-bottom: 1%;
+    width: 155px;
+}
+
+
+
+/* title fotter */
+
+.titleFotter {
+    background: rgba(0, 0, 0, 0.6);
+    width: 100%;
+    height: 20px;
+    display: flex;
+    justify-content: center;
+}
+
+
+.titleFotter p {
+    color: white;
+    font-size: 12px;
+    letter-spacing: .1rem;
+}
+
+
+
+/* info about how use this program */
+
+.titleInfoHowUseWebSite,
+.titleInfoHowLearn {
+    display: flex;
+    justify-content: center;
+}
+
+.titleInfoHowUseWebSite p {
+    font-size: 19px;
+    letter-spacing: .2rem;
+}
+
+.titleInfoHowLearn p {
+    font-size: 14px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.titleInfoHowLearnStart p {
+    font-size: 13px;
+}
+
+
+.imgInfo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.imgInfo img {
+    height: 100px;
+}
+
+
+
+
+
+
+
+
+/* for popup check input value when add */
+
+
+.popUpTextP1 {
+    color: rgb(0, 0, 0);
+    font-size: 19px;
+    letter-spacing: .1rem;
+}
+
+
+.popUpTextP2 {
+    color: rgb(0, 0, 0);
+    font-size: 13px;
+    letter-spacing: .1rem;
+}
+
+
+
+/* buttom add new animal */
+
+.wrap {
+    height: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 3%;
+}
+
+
+
+.wrapAdd::before,
+.wrapAdd::after,
+.wrapAdd {
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+}
+
+.wrapAdd {
+    text-transform: uppercase;
+    background: none;
+    border: none;
+    transition: all 0.3s ease-in-out 0s;
+    cursor: pointer;
+    outline: none;
+    position: relative;
+    padding: 10px;
+    width: 60px;
+    height: 60px;
+    margin: auto;
+    background: url("https://img.icons8.com/dusk/64/000000/add--v1.png") no-repeat 50%/70%;
+    color: #7ecab0;
+}
+
+.wrapAdd::before,
+.wrapAdd::after {
+    border-radius: 5%;
+    content: "";
+    z-index: -1;
+    margin: -5%;
+    box-shadow: inset 0 0 0 2px;
+    animation: clipMe 8s linear infinite;
+}
+
+.wrapAdd::before {
+    animation-delay: -4s;
+}
+
+
+
+@keyframes clipMe {
+
+    0%,
+    100% {
+        clip: rect(0px, 66px, 2px, 0px);
+    }
+
+    25% {
+        clip: rect(0px, 2px, 67px, 0px);
+    }
+
+    50% {
+        clip: rect(66px, 67px, 67px, 0px);
+    }
+
+    75% {
+        clip: rect(0px, 67px, 67px, 66px);
+    }
+}
+
+
+
+
+
+
+
+/* show all animals in a page this a card model */
+
+
+.cards-list {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    row-gap: 17px;
+    column-gap: 55px;
+    padding: 4%;
+}
+
+.cardx {
+    margin: 30px auto;
+    width: 150px;
+    height: 150px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+.cardx .card_image {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    border-radius: 40px;
+}
+
+.cardx .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+}
+
+.cardx .card_title {
+    text-align: center;
+    border-radius: 0px 0px 40px 40px;
+    font-family: sans-serif;
+    font-weight: bold;
+    font-size: 30px;
+    margin-top: -149px;
+    height: 10px;
+    background: none;
+}
+
+
+/* this image get animal food */
+.card_title p img {
+    height: 82px;
+    margin-top: 113px;
+}
+
+
+
+.cardx:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+        -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+.title-white {
+    display: flex;
+    justify-content: center;
+}
+
+.title-white h6 {
+    color: rgb(0, 0, 0);
+    position: absolute;
+    letter-spacing: .1rem;
+    font-size: 14px;
+}
+
+.title-black {
+    color: black;
+}
+
+
+
+
+
+
+/* title cheack or info when we add eat to animal */
+/* pop up add new animal */
+
+.titleHeaterHelp {
+    display: flex;
+    justify-content: start;
+    margin-top: -3%;
+    margin-bottom: 2.5%;
+}
+
+.titleHeaterHelp img {
+    width: 25px;
+}
+
+
+.inputEat ::placeholder {
+    font-size: 14px;
+}
+
+.titleHeater {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.titleHeater h1 {
+    color: rgb(0, 0, 0);
+    font-size: 20px;
+}
+
+
+.titleHeater p {
+    color: rgb(0, 0, 0);
+    font-size: 17px;
+}
+
+
+.titleHeater h6 {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+}
+
+
+.titleHeaterInfo {
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
+
+.titleHeaterInfo p {
+    color: rgb(0, 0, 0);
+    font-size: 14px;
+    letter-spacing: .1rem;
+}
+
+
+
+.titleHeater img {
+    height: 26px;
+}
+
+.titleHeater button img {
+    height: 30px;
+    top: 8px;
+    right: 16px;
+    position: absolute;
+}
+
+.soFull {
+    height: 230px;
+    border-radius: 50%;
+}
+
+
+.popUpTextP3 {
+    color: rgb(255, 255, 255);
+    font-size: 19px;
+    letter-spacing: .1rem;
+}
+
+
+
+@media all and (max-width: 500px) {
+    .cardx-list {
+        flex-direction: column;
+    }
+}
+
+
+.titleHeaterInfo {
+    display: flex;
+    justify-content: center;
+}
+
+
+.titleHeaterInfo h1 {
+    font-size: 20px;
+    letter-spacing: .2rem;
+
+}
+
+.infoImage {
+    display: flex;
+    justify-content: center;
+}
+
+.infoImage img {
+    height: 230px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+}
+
+.infoText p {
+    font-size: 13px;
+}
+
+.ButtonInfo {
+    display: flex;
+    justify-content: center;
+}
+
+
+.infoAdminVideo {
+    display: flex;
+    justify-content: center;
+}
+
+
+.infoAdminVideo a {
+    text-decoration: none;
+    color: black;
+    font-weight: bold;
+    cursor: pointer;
+    animation: color-change 2s infinite;
+
+}
+
+
+@keyframes color-change {
+    0% {
+        color: #80b4ff;
+    }
+
+    50% {
+        color: #45e5ff;
+    }
+
+    100% {
+        color: #a5a4f4;
+    }
+}
+
+
+.styleVideoAdmin video {
+    width: 100%;
+}
+
+
+.chioseInputOrImage,
+.chioseImage {
+    margin-top: 2%;
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+
+.chioseInputOrImage img {
+    cursor: pointer;
+    height: 130px;
+}
+
+
+
+
+.chioseImage img {
+    cursor: pointer;
+    height: 85px;
+}
+
+
+
+.closes {
+    padding-left: 3%;
+    font-size: 2.5rem;
+    line-height: 1;
+    color: rgb(0, 0, 0);
+    opacity: 1;
+    border: none;
+    background-color: none;
+    -webkit-appearance: none;
+    cursor: pointer;
+}
+
+
+
+.buttonExit {
+    display: flex;
+    justify-content: center;
+}
+
+
+
+
+/* pop up button style admin chiose */
+.styleChioseOptionAdmin {
+    display: flex;
+    justify-content: space-between;
+}
+
+.styleChioseOptionAdmin button {
+    font-size: 14px;
+}
+
+
+
+/* model delete info animals */
+.modelsInfoDeleteOrUpdated {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(6rem, 1fr));
+    grid-auto-rows: 6rem;
+}
+
+
+
+.cardDeleteOrUpdated {
+    margin: 30px auto;
+    width: 70px;
+    height: 70px;
+    border-radius: 40px;
+    box-shadow: 5px 5px 30px 7px rgba(0, 0, 0, 0.25), -5px -5px 30px 7px rgba(0, 0, 0, 0.22);
+    cursor: pointer;
+    transition: 0.4s;
+}
+
+
+
+
+.cardDeleteOrUpdated .card_image {
+    width: inherit;
+    height: inherit;
+    display: flex;
+    justify-content: center;
+    border-radius: 40px;
+}
+
+.cardDeleteOrUpdated .card_image img {
+    width: inherit;
+    height: inherit;
+    border-radius: 40px;
+    object-fit: cover;
+}
+
+
+.cardDeleteOrUpdated:hover {
+    transform: scale(0.9, 0.9);
+    box-shadow: 5px 5px 30px 15px rgba(0, 0, 0, 0.25),
+        -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
+}
+
+
+
+
+
+@media(max-width:991px) {
+
+    .cards-list {
+        padding: 1em;
+        margin-top: 0;
+    }
+
+
+    .title p {
+        font-size: 16px;
+        letter-spacing: .1rem;
+        margin-top: 4%;
+    }
+
+    .titleWeb {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+
+    .titleWeb h6 {
+        font-size: 12px;
+    }
+
+
+    .help p {
+        font-size: 12px;
+    }
+
+    .wrap {
+        margin-top: 8%;
+    }
+
+
+    .popUpHome h1 {
+        font-size: 15px;
+        letter-spacing: .2rem;
+        top: 30px;
+    }
+
+
+    .popUpHome img {
+        width: 300px;
+        margin-top: 5%;
+    }
+
+
+    .card_title svg {
+        height: 40px;
+        margin-top: 130px;
+    }
+
+
+    .cardx {
+        width: 150px;
+        height: 150px;
+    }
+
+
+    .cards-list {
+        row-gap: 11px;
+        column-gap: 8px;
+    }
+
+
+    .titleHeater h1 {
+        color: rgb(0, 0, 0);
+        font-size: 18px;
+    }
+
+    .inputEat ::placeholder {
+        font-size: 13px;
+    }
+
+    .titleHeater h1 img {
+        height: 25px;
+    }
+
+
+    .infoImage img {
+        height: 190px;
+    }
+
+
+    .help button {
+        font-size: 14px;
+        width: 140px;
+        letter-spacing: .2rem;
+        margin-bottom: 4%;
+    }
+
+
+    .chioseImage img {
+        cursor: pointer;
+        height: 81px;
+    }
+}
