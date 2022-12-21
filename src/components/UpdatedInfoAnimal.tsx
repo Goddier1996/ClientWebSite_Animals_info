@@ -64,7 +64,7 @@ function ChooseUpdatedAnimal() {
       <Modal.Body>
         <div className="modelsInfoDeleteOrUpdated">
           {notes.map((node) => (
-            <div className="cardDeleteOrUpdated">
+            <div key={node._id} className="cardDeleteOrUpdated">
               <div className="card_image">
                 <img src={node.image} onClick={() => AnimalChoose(node._id)} />
               </div>

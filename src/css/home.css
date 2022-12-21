@@ -375,8 +375,8 @@ html::-webkit-scrollbar-thumb {
 }
 
 .titleHeater {
-    display: flex;
-    justify-content: center;
+    /* display: flex;
+    justify-content: center; */
     text-align: center;
     align-items: center;
 }
@@ -390,6 +390,7 @@ html::-webkit-scrollbar-thumb {
 .titleHeater p {
     color: rgb(0, 0, 0);
     font-size: 17px;
+    font-weight: 600;
 }
 
 

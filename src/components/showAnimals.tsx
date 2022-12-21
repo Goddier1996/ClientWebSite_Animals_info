@@ -101,7 +101,7 @@ const AnimalsModals: React.FC = () => {
 
       <div className="cards-list">
         {notes.map((node) => (
-          <div className="cardx">
+          <div key={node._id} className="cardx">
             <div className="card_image">
               <img
                 src={node.image}

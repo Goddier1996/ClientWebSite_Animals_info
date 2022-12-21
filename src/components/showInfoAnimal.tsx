@@ -13,6 +13,7 @@ const InfoAnimal: React.FC = () => {
 
 
   const closePopUp = async () => {
+    sessionStorage.clear();
     window.location.reload();
   };
 
