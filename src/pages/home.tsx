@@ -7,7 +7,6 @@ import Swal from "sweetalert2";
 import { useState, useEffect } from "react";
 import videoBg from "../images/animals-sound-kids-brave-2022-11-16-12-22-50_pFFaKSHG.mp4";
 
-
 //components
 import AnimalsModals from "../components/showAnimals";
 import AddAnimal from "../components/AddAnimal";
@@ -16,7 +15,7 @@ import DeleteInfo from "../components/deleteAnimal";
 import ChooseUpdatedAnimal from "../components/UpdatedInfoAnimal";
 
 
-
+//home page
 const Home: React.FC = () => {
 
 
@@ -54,6 +53,7 @@ const Home: React.FC = () => {
   const handleCloseUpdatedAnimal = () => setShowUpdatedAnimal(false);
   const handleShowUpdatedAnimal = () => setShowUpdatedAnimal(true);
 
+  //save user data from database
   const [user, SetUser] = useState({});
 
 
@@ -156,12 +156,12 @@ const Home: React.FC = () => {
 
 
 
-
   // send this function to component sendMessageToAdmin to close model
   const hideModelSendMail = () => {
 
     setShowSendMessage(false);
   }
+
 
 
   useEffect(() => {
@@ -379,12 +379,15 @@ const Home: React.FC = () => {
       </div>
 
       
+
       {/* show all cards animals */}
       <div>
         {/* here you active all card animals and sound with compoment showAnimals */}
         <AnimalsModals />
       </div>
 
+      
+      
     </div>
   );
 };
