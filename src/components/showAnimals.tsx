@@ -7,7 +7,6 @@ import { API } from "../Server/API";
 import Swal from "sweetalert2";
 import { Form, Modal } from "react-bootstrap";
 
-
 //commpoment
 import AddFoodAnimal from "./addFoodAnimal";
 import InfoAnimal from "./showInfoAnimal";
@@ -22,6 +21,7 @@ const AnimalsModals: React.FC = () => {
   const [show, setShow] = useState(false);
   const handleClose = () => setShow(false);
   const handleShow = () => setShow(true);
+
 
   //popup open or close , show info about animal
   const [show1, setShow1] = useState(false);
@@ -80,6 +80,15 @@ const AnimalsModals: React.FC = () => {
 
 
 
+
+  // send this function to component showInfoAnimal to close model
+  const hideModelInfoAnimal = () => {
+
+    setShow1(false);
+  }
+
+
+
   //active a LoadAllNotes
   useEffect(() => {
     LoadAllNotes();
@@ -97,8 +106,9 @@ const AnimalsModals: React.FC = () => {
 
 
   return (
-    <div>
 
+    <div>
+ 
       <div className="cards-list">
         {notes.map((node) => (
           <div key={node._id} className="cardx">
@@ -172,7 +182,7 @@ const AnimalsModals: React.FC = () => {
           <Modal.Body>
             <Form>
               {/* show pop up info about animal - use showInfoAnimal.js */}
-              <InfoAnimal />
+              <InfoAnimal hideModelInfo={hideModelInfoAnimal} />
             </Form>
           </Modal.Body>
         </Modal>

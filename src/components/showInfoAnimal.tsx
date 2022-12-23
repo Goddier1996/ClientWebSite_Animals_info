@@ -5,17 +5,10 @@ import { Modal, Button } from "react-bootstrap";
 
 
 //this compoment show info about animal,active this compoment in showAnimal.js
-const InfoAnimal: React.FC = () => {
+const InfoAnimal: React.FC<{ hideModelInfo: Function }> = ({ hideModelInfo }) => {
 
 
   let animalData = JSON.parse(sessionStorage.getItem("animal") as any);
-
-
-
-  const closePopUp = async () => {
-    sessionStorage.clear();
-    window.location.reload();
-  };
 
 
 
@@ -40,7 +33,7 @@ const InfoAnimal: React.FC = () => {
         </div>
 
         <div className="ButtonInfo">
-          <Button variant="success" onClick={closePopUp}>
+          <Button variant="success" onClick={() => hideModelInfo()}>
             Wow Good Info
           </Button>
         </div>

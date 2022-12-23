@@ -5,7 +5,7 @@ import Swal from "sweetalert2";
 
 
 //here component we add to animal food and check if this he eat,show popup,use in AddFoodAnimal compoments
-const InputEat: React.FC = () => {
+const InputEat: React.FC<{ hideModelFood: Function }> = ({hideModelFood}) => {
 
 
   //take data from seeison storage this animal,we add sessioson storage in showAnimals.js start fucn
@@ -114,6 +114,10 @@ const InputEat: React.FC = () => {
       <div className="ButtonInfo">
         <Button variant="success" onClick={GetEatToAnimal}>
           To Feed
+        </Button>
+        
+        <Button variant="danger" onClick={() => hideModelFood()}>
+          Close
         </Button>
       </div>
       

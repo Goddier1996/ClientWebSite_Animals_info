@@ -25,34 +25,34 @@ const Home: React.FC = () => {
   const [password, setPassword] = useState("");
 
   //pop up connect admin
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
+  const [showConnectAdmin, setShowConnectAdmin] = useState(false);
+  const handleCloseConnectAdmin = () => setShowConnectAdmin(false);
+  const handleShowConnectAdmin = () => setShowConnectAdmin(true);
 
   //popup send meesage to admin
-  const [show2, setShow2] = useState(false);
-  const handleClose2 = () => setShow2(false);
-  const handleShow2 = () => setShow2(true);
+  const [showSendMessage, setShowSendMessage] = useState(false);
+  const handleCloseSendMessage = () => setShowSendMessage(false);
+  const handleShowSendMessage = () => setShowSendMessage(true);
 
   //popup chiose options add new animal , delete info animal , Updated info Animal
-  const [show3, setShow3] = useState(false);
-  const handleClose3 = () => setShow3(false);
-  const handleShow3 = () => setShow3(true);
+  const [showOptionsAdmin, setShowOptionsAdmin] = useState(false);
+  const handleCloseOptionsAdmin = () => setShowOptionsAdmin(false);
+  const handleShowOptionsAdmin = () => setShowOptionsAdmin(true);
 
   //popup add new animal
-  const [show1, setShow1] = useState(false);
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
+  const [showAddNewAnimal, setShowAddNewAnimal] = useState(false);
+  const handleCloseAddNewAnimal = () => setShowAddNewAnimal(false);
+  const handleShowAddNewAnimal = () => setShowAddNewAnimal(true);
 
   //popup delete info animal
-  const [show4, setShow4] = useState(false);
-  const handleClose4 = () => setShow4(false);
-  const handleShow4 = () => setShow4(true);
+  const [showDeleteAnimal, setShowDeleteAnimal] = useState(false);
+  const handleCloseDeleteAnimal = () => setShowDeleteAnimal(false);
+  const handleShowDeleteAnimal = () => setShowDeleteAnimal(true);
 
   //popup Updated info Animal
-  const [show5, setShow5] = useState(false);
-  const handleClose5 = () => setShow5(false);
-  const handleShow5 = () => setShow5(true);
+  const [showUpdatedAnimal, setShowUpdatedAnimal] = useState(false);
+  const handleCloseUpdatedAnimal = () => setShowUpdatedAnimal(false);
+  const handleShowUpdatedAnimal = () => setShowUpdatedAnimal(true);
 
   const [user, SetUser] = useState({});
 
@@ -82,7 +82,7 @@ const Home: React.FC = () => {
       if (userData[i].Login == login && userData[i].Password == password) {
 
         //show popup
-        handleShow3();
+        handleShowOptionsAdmin();
       }
       
       else {
@@ -116,9 +116,9 @@ const Home: React.FC = () => {
     }).then((result) => {
 
       if (result.isConfirmed) {
-        handleShow();
+        handleShowConnectAdmin();
       } else if (result.isDenied) {
-        handleShow2();
+        handleShowSendMessage();
       }
     });
   };
@@ -129,15 +129,15 @@ const Home: React.FC = () => {
   const chioseForAdmin = async (chiose: number) => {
 
     if (chiose == 1) {
-      handleShow1();
+      handleShowAddNewAnimal();
     }
 
     if (chiose == 2) {
-      handleShow4();
+      handleShowDeleteAnimal();
     }
 
     if (chiose == 3) {
-      handleShow5();
+      handleShowUpdatedAnimal();
     }
   };
 
@@ -156,6 +156,14 @@ const Home: React.FC = () => {
 
 
 
+
+  // send this function to component sendMessageToAdmin to close model
+  const hideModelSendMail = () => {
+
+    setShowSendMessage(false);
+  }
+
+
   useEffect(() => {
     LoadUser();
   }, []);
@@ -165,20 +173,23 @@ const Home: React.FC = () => {
 
   return (
     <div>
+
       {/* button add new info about animal */}
       <div className="wrap">
         <div onClick={clickToButtonAddPopUp} className="wrapAdd"></div>
       </div>
 
+      
+
       {/* pop up connect Admin */}
       <div>
         <Modal
-          show={show}
-          onHide={handleClose}
+          show={showConnectAdmin}
+          onHide={handleCloseConnectAdmin}
           style={{ background: "rgba(0, 0, 0, 0.7)" }}
           aria-labelledby="contained-modal-title-vcenter"
         >
-          <p className="closes" onClick={handleClose} aria-label="Close">
+          <p className="closes" onClick={handleCloseConnectAdmin} aria-label="Close">
             &times;
           </p>
 
@@ -229,33 +240,35 @@ const Home: React.FC = () => {
         </Modal>
       </div>
 
-      {/* pop up send message to admin,if you wants to new info animal , from sendMessage.js compoment */}
+      
 
+      {/* pop up send message to admin,if you wants to new info animal , from sendMessage.js compoment */}
       <div>
         <Modal
-          show={show2}
-          onHide={handleClose2}
+          show={showSendMessage}
+          onHide={handleCloseSendMessage}
           style={{ background: "rgba(0, 0, 0, 0.7)" }}
           aria-labelledby="contained-modal-title-vcenter"
         >
           <Modal.Body>
             <Form>
-              <SendMessage />
+              <SendMessage closeModelEmail={hideModelSendMail} />
             </Form>
           </Modal.Body>
         </Modal>
       </div>
 
-      {/* pop up chiose what admin do to add new animal or delete info animal or Updated info Animal */}
+      
 
+      {/* pop up chiose what admin do to add new animal or delete info animal or Updated info Animal */}
       <div>
         <Modal
-          show={show3}
-          onHide={handleClose3}
+          show={showOptionsAdmin}
+          onHide={handleCloseOptionsAdmin}
           style={{ background: "rgba(0, 0, 0, 0.7)" }}
           aria-labelledby="contained-modal-title-vcenter"
         >
-          <p className="closes" onClick={handleClose3} aria-label="Close">
+          <p className="closes" onClick={handleCloseOptionsAdmin} aria-label="Close">
             &times;
           </p>
 
@@ -302,15 +315,16 @@ const Home: React.FC = () => {
         </Modal>
       </div>
 
-      {/* pop up add new info animal from compoment addAnimal , from AddAnimal.js compoment */}
+      
 
+      {/* pop up add new info animal from compoment addAnimal , from AddAnimal.js compoment */}
       <div>
         <Modal
-          show={show1}
-          onHide={handleClose1}
+          show={showAddNewAnimal}
+          onHide={handleCloseAddNewAnimal}
           aria-labelledby="contained-modal-title-vcenter"
         >
-          <p className="closes" onClick={handleClose1} aria-label="Close">
+          <p className="closes" onClick={handleCloseAddNewAnimal} aria-label="Close">
             &times;
           </p>
 
@@ -322,15 +336,16 @@ const Home: React.FC = () => {
         </Modal>
       </div>
 
-      {/* pop up delete animal info , from deleteInfo.js compoment */}
+      
 
+      {/* pop up delete animal info , from deleteInfo.js compoment */}
       <div>
         <Modal
-          show={show4}
-          onHide={handleClose4}
+          show={showDeleteAnimal}
+          onHide={handleCloseDeleteAnimal}
           aria-labelledby="contained-modal-title-vcenter"
         >
-          <p className="closes" onClick={handleClose4} aria-label="Close">
+          <p className="closes" onClick={handleCloseDeleteAnimal} aria-label="Close">
             &times;
           </p>
 
@@ -342,15 +357,16 @@ const Home: React.FC = () => {
         </Modal>
       </div>
 
-      {/* pop up Choose Animal updated info , from ChooseUpdatedAnimal.js compoment*/}
+      
 
+      {/* pop up Choose Animal updated info , from ChooseUpdatedAnimal.js compoment*/}
       <div>
         <Modal
-          show={show5}
-          onHide={handleClose5}
+          show={showUpdatedAnimal}
+          onHide={handleCloseUpdatedAnimal}
           aria-labelledby="contained-modal-title-vcenter"
         >
-          <p className="closes" onClick={handleClose5} aria-label="Close">
+          <p className="closes" onClick={handleCloseUpdatedAnimal} aria-label="Close">
             &times;
           </p>
 
@@ -362,10 +378,13 @@ const Home: React.FC = () => {
         </Modal>
       </div>
 
+      
+      {/* show all cards animals */}
       <div>
         {/* here you active all card animals and sound with compoment showAnimals */}
         <AnimalsModals />
       </div>
+
     </div>
   );
 };

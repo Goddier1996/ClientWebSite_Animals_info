@@ -475,7 +475,7 @@ html::-webkit-scrollbar-thumb {
 
 .ButtonInfo {
     display: flex;
-    justify-content: center;
+    justify-content: space-evenly;
 }
 
 
