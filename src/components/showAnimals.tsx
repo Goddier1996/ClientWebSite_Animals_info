@@ -14,7 +14,7 @@ import InfoAnimal from "./showInfoAnimal";
 
 
 //this in card ui style and load from node js data a animals name and sound commpoment active home.js for show
-const AnimalsModals: React.FC = () => {
+const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
 
 
   //popup open or close , sound animal show popUp
@@ -89,6 +89,26 @@ const AnimalsModals: React.FC = () => {
 
 
 
+  // const onSearch = (event:any) => {
+    
+  //   // not Refresh a page when click to button
+  //   event.preventDefault();
+    
+  //   const searchQuery = event.target.elements["search-query"].value;
+  //   setQuery(searchQuery);
+  // }
+
+
+
+
+ // filter Search the animal from data base
+  const filteredData = notes.filter((item: any) => {
+
+      return item.title.toLowerCase().startsWith(query)
+  }) 
+
+
+
   //active a LoadAllNotes
   useEffect(() => {
     LoadAllNotes();
@@ -108,9 +128,9 @@ const AnimalsModals: React.FC = () => {
   return (
 
     <div>
- 
+
       <div className="cards-list">
-        {notes.map((node) => (
+        {filteredData.map((node) => (
           <div key={node._id} className="cardx">
             <div className="card_image">
               <img
@@ -126,11 +146,8 @@ const AnimalsModals: React.FC = () => {
             </div>
 
             <div className="card_title title-white">
+
               <h6> {node.title}</h6>
-
-              {/* sound play animals */}
-              {/* <p><PlayAudio url={node.sound} /></p> */}
-
               <p
                 onClick={() =>
                   start(
@@ -149,6 +166,8 @@ const AnimalsModals: React.FC = () => {
         ))}
       </div>
 
+      
+      {/* get a food animal */}
       <div>
 
         <Modal
@@ -171,6 +190,8 @@ const AnimalsModals: React.FC = () => {
         
       </div>
 
+      
+      {/* show animal info model */}
       <div>
 
         <Modal
@@ -191,8 +212,8 @@ const AnimalsModals: React.FC = () => {
 
     </div>
   );
-};
 
+};
 
 
 export default AnimalsModals;

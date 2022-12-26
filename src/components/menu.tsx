@@ -2,7 +2,7 @@ import React from "react";
 import "../css/home.css";
 import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
-
+import OptionsSite from "./optionsSite";
 
 
 //this in menu commpoment active in App.js for show
@@ -14,8 +14,8 @@ const Menu: React.FC = () => {
   const handleShow = () => setShow(true);
 
 
-  
   return (
+
     <div className="title">
       <div className="titleWeb">
         <p>Information about all types of animals for children</p>
@@ -65,18 +65,23 @@ const Menu: React.FC = () => {
               </p>
             </div>
 
-            <div className="ButtonInfo">
-              <Button variant="success" onClick={handleClose}>
+            
+            {/* chioose options start or move to model component OptionsSite show all options site */}
+            <div style={{textAlign:"center"}}>
+              <Button style={{margin:"3%"}} variant="success" onClick={handleClose}>
                 Let`s start
               </Button>
+
+              <OptionsSite />
+
             </div>
+
           </Modal.Body>
         </Modal>
       </div>
     </div>
   );
-}
-
+};
 
 
 export default Menu;

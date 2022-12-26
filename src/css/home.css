@@ -191,85 +191,6 @@ html::-webkit-scrollbar-thumb {
 
 
 
-/* buttom add new animal */
-
-.wrap {
-    height: 100%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    margin-top: 3%;
-}
-
-
-
-.wrapAdd::before,
-.wrapAdd::after,
-.wrapAdd {
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    left: 0;
-    right: 0;
-}
-
-.wrapAdd {
-    text-transform: uppercase;
-    background: none;
-    border: none;
-    transition: all 0.3s ease-in-out 0s;
-    cursor: pointer;
-    outline: none;
-    position: relative;
-    padding: 10px;
-    width: 60px;
-    height: 60px;
-    margin: auto;
-    background: url("https://img.icons8.com/dusk/64/000000/add--v1.png") no-repeat 50%/70%;
-    color: #7ecab0;
-}
-
-.wrapAdd::before,
-.wrapAdd::after {
-    border-radius: 5%;
-    content: "";
-    z-index: -1;
-    margin: -5%;
-    box-shadow: inset 0 0 0 2px;
-    animation: clipMe 8s linear infinite;
-}
-
-.wrapAdd::before {
-    animation-delay: -4s;
-}
-
-
-
-@keyframes clipMe {
-
-    0%,
-    100% {
-        clip: rect(0px, 66px, 2px, 0px);
-    }
-
-    25% {
-        clip: rect(0px, 2px, 67px, 0px);
-    }
-
-    50% {
-        clip: rect(66px, 67px, 67px, 0px);
-    }
-
-    75% {
-        clip: rect(0px, 67px, 67px, 66px);
-    }
-}
-
-
-
-
-
-
 
 /* show all animals in a page this a card model */
 
@@ -593,8 +514,6 @@ html::-webkit-scrollbar-thumb {
 }
 
 
-
-
 .cardDeleteOrUpdated .card_image {
     width: inherit;
     height: inherit;
@@ -617,6 +536,97 @@ html::-webkit-scrollbar-thumb {
         -5px -5px 30px 15px rgba(0, 0, 0, 0.22);
 }
 
+
+
+
+/* search style */
+
+.modelSearch {
+    display: flex;
+    justify-content: center;
+    margin-top: 2%;
+    cursor: pointer;
+}
+
+.search-box {
+    font-size: 16px;
+    display: inline-block;
+    position: relative;
+    border-radius: 2.5em;
+    border-radius: 100px;
+    border-right: 0.3em #40a89f solid;
+    border-left: 0.3em #fec107 solid;
+    border-top: 0.3em #40a89f solid;
+    border-bottom: 0.3em #fec107 solid;
+}
+
+.search-box input[type=text] {
+    font-family: inherit;
+    font-weight: bold;
+    width: 2.5em;
+    height: 2.5em;
+    padding: 0.3em 2.1em 0.3em 0.4em;
+    border: none;
+    box-sizing: border-box;
+    border-radius: 2.5em;
+    transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55) 150ms;
+    background: rgba(0, 0, 0, 0);
+    cursor: pointer;
+}
+
+.search-box input[type=text]:focus {
+    outline: none;
+}
+
+.search-box input[type=text]:focus,
+.search-box input[type=text]:not(:placeholder-shown) {
+    width: 18em;
+    transition: width 800ms cubic-bezier(0.68, -0.55, 0.27, 1.55);
+}
+
+.search-box input[type=text]:focus+button[type=reset],
+.search-box input[type=text]:not(:placeholder-shown)+button[type=reset] {
+    transform: rotate(-45deg) translateY(0);
+    transition: transform 150ms ease-out 800ms;
+}
+
+.search-box input[type=text]:focus+button[type=reset]:after,
+.search-box input[type=text]:not(:placeholder-shown)+button[type=reset]:after {
+    opacity: 1;
+    transition: top 150ms ease-out 950ms, right 150ms ease-out 950ms, opacity 150ms ease 950ms;
+}
+
+.search-box button[type=reset] {
+    background-color: transparent;
+    width: 1.4em;
+    height: 1.4em;
+    border: 0;
+    padding: 0;
+    outline: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: absolute;
+    top: 0.55em;
+    right: 0.55em;
+    transform: rotate(-45deg) translateY(2.2em);
+    transition: transform 150ms ease-out 150ms;
+}
+
+.search-box button[type=reset]:before,
+.search-box button[type=reset]:after {
+    content: "";
+    background-color: #000000;
+    width: 0.3em;
+    height: 1.4em;
+    position: absolute;
+}
+
+.search-box button[type=reset]:after {
+    transform: rotate(90deg);
+    opacity: 0;
+    transition: transform 150ms ease-out, opacity 150ms ease-out;
+}
 
 
 
@@ -713,9 +723,16 @@ html::-webkit-scrollbar-thumb {
         margin-bottom: 4%;
     }
 
-
     .chioseImage img {
         cursor: pointer;
         height: 81px;
+    }
+
+    .modelSearch {
+        margin-top: 5%;
+    }
+
+    .search-box {
+        font-size: 15px;
     }
 }
