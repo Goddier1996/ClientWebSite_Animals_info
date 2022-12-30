@@ -1,11 +1,12 @@
-import React from "react";
-import { useState } from "react";
+import React , { useState } from "react";
 import { Button, Form, Modal } from "react-bootstrap";
 import "../css/home.css";
 
-// active components
+//components
 import ImageEat from "../components/FotoEat";
 import InputEat from "../components/giveFoodAnimal";
+
+
 
 //here component we add to animal food and check if this he eat,show popup,use in showAnimals compoments
 const AddFoodAnimal: React.FC = () => {
@@ -39,6 +40,7 @@ const AddFoodAnimal: React.FC = () => {
 
   return (
     <div>
+
       <div className="titleHeater">
         <h1>
           Hi I Am {animalData.name} , i am angry{" "}
@@ -55,6 +57,7 @@ const AddFoodAnimal: React.FC = () => {
         </h6>
       </div>
 
+      
       <div className="chioseInputOrImage">
         <img
           src="https://i.postimg.cc/SsP7gY7L/image.png"

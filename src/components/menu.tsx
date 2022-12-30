@@ -1,6 +1,5 @@
-import React from "react";
+import React , { useState } from "react";
 import "../css/home.css";
-import { useState } from "react";
 import { Button, Modal } from "react-bootstrap";
 import OptionsSite from "./optionsSite";
 
@@ -65,15 +64,13 @@ const Menu: React.FC = () => {
               </p>
             </div>
 
-            
-            {/* chioose options start or move to model component OptionsSite show all options site */}
+            {/* choose options start or move to model component OptionsSite show all options site */}
             <div style={{textAlign:"center"}}>
               <Button style={{margin:"3%"}} variant="success" onClick={handleClose}>
                 Let`s start
               </Button>
 
               <OptionsSite />
-
             </div>
 
           </Modal.Body>

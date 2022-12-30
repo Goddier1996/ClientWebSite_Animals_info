@@ -1,9 +1,9 @@
-import React from "react";
+import React , { useState, useEffect } from "react";
 import "../css/home.css";
-import { API } from "../Server/API";
-import { useState, useEffect } from "react";
 import { Modal } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { DeleteAnimal } from "../Server/DeleteDataApi";
+import { LoadAllCardsAnimals } from "../Server/LoadDataApi";
 
 
 
@@ -19,10 +19,7 @@ const DeleteInfo: React.FC = () => {
   //load all card animals from database
   const LoadAllNotes = async () => {
 
-    let res = await fetch(API.NODE.GET, { method: "GET" });
-    let data = await res.json();
-
-    SetNotes(data);
+    SetNotes(await LoadAllCardsAnimals());
   };
 
 
@@ -30,7 +27,7 @@ const DeleteInfo: React.FC = () => {
   // here we delete the info animal from data base
   const DeleteAnimalFromDataBase = async (Id: string) => {
 
-    fetch(`${API.NODE.GET}/${Id}`, { method: "DELETE" });
+    await DeleteAnimal(Id);
 
     Swal.fire({
       position: "top-end",

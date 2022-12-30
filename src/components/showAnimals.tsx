@@ -1,52 +1,49 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import "../css/home.css";
-
-// import PlayAudio from 'react-simple-audio-player'
-import { useState, useEffect } from "react";
-import { API } from "../Server/API";
 import Swal from "sweetalert2";
 import { Form, Modal } from "react-bootstrap";
 
 //commpoment
 import AddFoodAnimal from "./addFoodAnimal";
 import InfoAnimal from "./showInfoAnimal";
+import { LoadAllCardsAnimals } from "../Server/LoadDataApi";
 
 
 
 //this in card ui style and load from node js data a animals name and sound commpoment active home.js for show
-const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
+const AnimalsModals: React.FC<{ query: string }> = ({ query }) => {
 
 
   //popup open or close , sound animal show popUp
-  const [show, setShow] = useState(false);
-  const handleClose = () => setShow(false);
-  const handleShow = () => setShow(true);
-
+  const [showGetFoodAnimal, setShowGetFoodAnimal] = useState(false);
+  const handleCloseGetFoodAnimal = () => setShowGetFoodAnimal(false);
+  const handleShowGetFoodAnimal = () => setShowGetFoodAnimal(true);
 
   //popup open or close , show info about animal
-  const [show1, setShow1] = useState(false);
-  const handleClose1 = () => setShow1(false);
-  const handleShow1 = () => setShow1(true);
+  const [showShowInfoAnimal, setShowShowInfoAnimal] = useState(false);
+  const handleCloseShowInfoAnimal = () => setShowShowInfoAnimal(false);
+  const handleShowShowInfoAnimal = () => setShowShowInfoAnimal(true);
 
   //save for show all models animals from nodejs json file
   const [notes, SetNotes] = useState([] as any[]);
 
 
 
-  //load all card animals from node js json file
+  //load all card animals from api
   const LoadAllNotes = async () => {
-
-    let res = await fetch(API.NODE.GET, { method: "GET" });
-    let data = await res.json();
-
-    SetNotes(data);
+    SetNotes(await LoadAllCardsAnimals());
   };
 
 
 
   //here we save data animal from nodeJs database to seesion storge,and show popup where we input value what animal eat
-  const start = async (sound: string, name: string, eat: string, notEatImage: string, eatImage: string) => {
-    
+  const start = async (
+    sound: string,
+    name: string,
+    eat: string,
+    notEatImage: string,
+    eatImage: string
+  ) => {
     let animal = {
       name: name,
       eat: eat,
@@ -58,15 +55,17 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
     sessionStorage.setItem("animal", JSON.stringify(animal));
 
     //show popup
-    handleShow();
+    handleShowGetFoodAnimal();
   };
 
 
 
-
   //here we save data animal from nodeJs json file to seesion storge,and show popup about Animal show info
-  const clickToImageForInfo = async (info: string, imageInfo: string, name: string) => {
-    
+  const clickToImageForInfo = async (
+    info: string,
+    imageInfo: string,
+    name: string
+  ) => {
     let animal = {
       name: name,
       info: info,
@@ -75,37 +74,23 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
 
     sessionStorage.setItem("animal", JSON.stringify(animal));
 
-    handleShow1();
+    handleShowShowInfoAnimal();
   };
-
 
 
 
   // send this function to component showInfoAnimal to close model
   const hideModelInfoAnimal = () => {
 
-    setShow1(false);
-  }
+    setShowShowInfoAnimal(false);
+  };
 
 
 
-  // const onSearch = (event:any) => {
-    
-  //   // not Refresh a page when click to button
-  //   event.preventDefault();
-    
-  //   const searchQuery = event.target.elements["search-query"].value;
-  //   setQuery(searchQuery);
-  // }
-
-
-
-
- // filter Search the animal from data base
+  // filter Search the animal from data base
   const filteredData = notes.filter((item: any) => {
-
-      return item.title.toLowerCase().startsWith(query)
-  }) 
+    return item.title.toLowerCase().startsWith(query);
+  });
 
 
 
@@ -124,9 +109,7 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
 
 
 
-
   return (
-
     <div>
 
       <div className="cards-list">
@@ -146,7 +129,6 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
             </div>
 
             <div className="card_title title-white">
-
               <h6> {node.title}</h6>
               <p
                 onClick={() =>
@@ -169,14 +151,13 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
       
       {/* get a food animal */}
       <div>
-
         <Modal
-          show={show}
+          show={showGetFoodAnimal}
           aria-labelledby="contained-modal-title-vcenter"
-          onHide={handleClose}
+          onHide={handleCloseGetFoodAnimal}
           style={{ background: "rgba(0, 0, 0, 0.8)" }}
         >
-          <p className="closes" onClick={handleClose} aria-label="Close">
+          <p className="closes" onClick={handleCloseGetFoodAnimal} aria-label="Close">
             &times;
           </p>
 
@@ -187,17 +168,15 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
             </Form>
           </Modal.Body>
         </Modal>
-        
       </div>
 
       
       {/* show animal info model */}
       <div>
-
         <Modal
-          show={show1}
+          show={showShowInfoAnimal}
           aria-labelledby="contained-modal-title-vcenter"
-          onHide={handleClose1}
+          onHide={handleCloseShowInfoAnimal}
           style={{ background: "rgba(0, 0, 0, 0.6)" }}
         >
           <Modal.Body>
@@ -207,12 +186,10 @@ const AnimalsModals: React.FC<{ query: string }> = ({query}) => {
             </Form>
           </Modal.Body>
         </Modal>
-
       </div>
 
     </div>
   );
-
 };
 
 

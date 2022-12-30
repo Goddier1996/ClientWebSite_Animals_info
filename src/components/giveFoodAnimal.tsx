@@ -1,7 +1,7 @@
-import React from "react";
-import { useState } from "react";
+import React , { useState } from "react";
 import { Button, Form, Popover, OverlayTrigger } from "react-bootstrap";
 import Swal from "sweetalert2";
+
 
 
 //here component we add to animal food and check if this he eat,show popup,use in AddFoodAnimal compoments
@@ -34,6 +34,7 @@ const InputEat: React.FC<{ hideModelFood: Function }> = ({hideModelFood}) => {
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.reload();
+          sessionStorage.clear();
         }
       });
     }
@@ -49,6 +50,8 @@ const InputEat: React.FC<{ hideModelFood: Function }> = ({hideModelFood}) => {
       });
     }
     
+      
+      
     else if (animalData.eat != eat) {
       Swal.fire({
         position: "center",

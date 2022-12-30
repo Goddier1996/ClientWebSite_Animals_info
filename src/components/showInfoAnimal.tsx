@@ -11,6 +11,13 @@ const InfoAnimal: React.FC<{ hideModelInfo: Function }> = ({ hideModelInfo }) =>
   let animalData = JSON.parse(sessionStorage.getItem("animal") as any);
 
 
+  const hideModel = async () => {
+
+    await hideModelInfo();
+    sessionStorage.clear();
+  }
+
+  
 
   return (
     <div>
@@ -33,7 +40,7 @@ const InfoAnimal: React.FC<{ hideModelInfo: Function }> = ({ hideModelInfo }) =>
         </div>
 
         <div className="ButtonInfo">
-          <Button variant="success" onClick={() => hideModelInfo()}>
+          <Button variant="success" onClick={hideModel}>
             Wow Good Info
           </Button>
         </div>

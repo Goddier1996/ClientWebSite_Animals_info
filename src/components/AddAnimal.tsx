@@ -1,9 +1,9 @@
-import React from "react";
+import React , { useState } from "react";
 import "../css/home.css";
-import { API } from "../Server/API";
-import { useState } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { addAnimal } from "../Server/AddDataToApi";
+
 
 
 //this is AddAnimal commpoment active in Home.js for add new animals info
@@ -41,7 +41,7 @@ const AddAnimal: React.FC = () => {
 
 
   //check url input image and sound   - 2
-  const add = async () => {
+  const checkValue = async () => {
 
     // check url input
     let x: boolean = isValidUrl(sound);
@@ -81,7 +81,7 @@ const AddAnimal: React.FC = () => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
-        addPost();
+        addNewAnimal();
         sessionStorage.clear();
         window.location.reload();
       });
@@ -91,35 +91,20 @@ const AddAnimal: React.FC = () => {
 
 
 
-  // Add Post
-  const addPost = async () => {
+  const addNewAnimal = async () => {
 
-    try {
-      let user = {
-        title: title,
-        sound: sound,
-        image: image,
-        eat: eat,
-        infoAnimal: infoAnimal,
-        infoImage: infoImage,
-        notEatImage: notEatImage,
-        eatImage: eatImage,
-      };
+    let user = {
+      title: title,
+      sound: sound,
+      image: image,
+      eat: eat,
+      infoAnimal: infoAnimal,
+      infoImage: infoImage,
+      notEatImage: notEatImage,
+      eatImage: eatImage,
+    };
 
-      let res = await fetch(API.NODE.ADD, {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(user),
-      });
-      
-
-      window.location.reload();
-
-    } catch (error) {
-      console.log(error);
-    }
+    await addAnimal(user)
   };
 
 
@@ -213,7 +198,7 @@ const AddAnimal: React.FC = () => {
         </Form.Group>
       </Modal.Body>
       <Modal.Footer>
-        <Button variant="success" onClick={add}>
+        <Button variant="success" onClick={checkValue}>
           Add new Animal
         </Button>
       </Modal.Footer>

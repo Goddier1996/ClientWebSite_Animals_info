@@ -1,13 +1,12 @@
-import React from "react";
+import React , { useState, useEffect } from "react";
 import "../css/home.css";
 import { API } from "../Server/API";
-import { useState, useEffect } from "react";
 import { Form, Modal } from "react-bootstrap";
 import UpdatedInfo from "../components/UpdatedAnimal";
 
 
 // here choose a animal.how we need updated , when we choose save a id in seesion storge and go to UpdatedInfo.js components
-function ChooseUpdatedAnimal() {
+const ChooseUpdatedAnimal: React.FC = () => {
 
 
   const [show, setShow] = useState(false);

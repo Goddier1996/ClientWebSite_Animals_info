@@ -1,9 +1,9 @@
-import React from "react";
+import React , { useState, useEffect } from "react";
 import "../css/home.css";
-import { API } from "../Server/API";
-import { useState, useEffect } from "react";
 import { Form, Modal, Button } from "react-bootstrap";
 import Swal from "sweetalert2";
+import { updateInDateAnimal } from "../Server/AddDataOrUpdatedApi";
+import { LoadAllCardsAnimals } from "../Server/LoadDataApi";
 
 
 // in this components Updated a info animal what we choose , in ChooseUpdatedAnimal.js components
@@ -32,12 +32,7 @@ const UpdatedInfo: React.FC = () => {
   // here load a info animal with id data base
   const LoadAnimalInfo = async () => {
 
-    let res = await fetch(`${API.NODE.GET}/${AnimalData.idAnimal}`, {
-      method: "GET",
-    });
-
-    let data = await res.json();
-    SetDataAnimal(data);
+    SetDataAnimal(await LoadAllCardsAnimals());
   };
 
 
@@ -62,6 +57,7 @@ const UpdatedInfo: React.FC = () => {
 
   // here check input value if was empty , and check a links if good
   const CheckInputValue = async () => {
+
     let x:boolean = isValidUrl(sound);
     let x1:boolean = isValidUrl(image);
     let x2:boolean = isValidUrl(infoImage);
@@ -90,7 +86,8 @@ const UpdatedInfo: React.FC = () => {
       return;
     }
 
-    if (x == true && x1 == true && x2 == true) {
+
+    else {
       Swal.fire({
         position: "top-end",
         icon: "success",
@@ -98,6 +95,7 @@ const UpdatedInfo: React.FC = () => {
         showConfirmButton: false,
         timer: 1500,
       }).then(() => {
+
         updateDateAnimal();
         sessionStorage.clear();
         window.location.reload();
@@ -111,8 +109,7 @@ const UpdatedInfo: React.FC = () => {
   // here Admin Update a info Animal
   const updateDateAnimal = async () => {
 
-    try {
-      let Animal = {
+      let Animal:any = {
         title: title,
         sound: sound,
         image: image,
@@ -123,22 +120,10 @@ const UpdatedInfo: React.FC = () => {
         eatImage: eatImage,
       };
 
-      await fetch(`${API.NODE.GET}/${AnimalData.idAnimal}`, {
-        method: "PATCH",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(Animal),
-      });
-    } catch (error) {
-      Swal.fire({
-        icon: "error",
-        title: "Oops...",
-        text: "Something went wrong!",
-      });
+    let id: string = AnimalData.idAnimal;
+    
+    await updateInDateAnimal(Animal, id);
 
-      console.log(error);
-    }
   };
 
 

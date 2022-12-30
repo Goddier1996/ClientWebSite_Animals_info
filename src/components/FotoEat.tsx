@@ -40,6 +40,7 @@ const FotoEat: React.FC = () => {
       }).then((result) => {
         if (result.isConfirmed) {
           window.location.reload();
+          sessionStorage.clear();
         }
       });
     }
